@@ -1,0 +1,407 @@
+{
+    "libros": [
+            { 
+                "id": 1,
+                "titulo": "La comunidad", 
+                "autor": "Helene Flood",
+                "imagen": "assets/books/la-comunidad--helene-flood.webp",
+                "genero": "Policiales",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 2,
+                "titulo": "La historia del loco", 
+                "autor": "John Katzenbach",
+                "imagen": "assets/books/john-katzenbach--la-historia-del-loco.webp",
+                "genero": "Policiales",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 3,
+                "titulo": "Leviatán",
+                "autor": "Paul Auster",
+                "imagen": "assets/books/paul-auster--leviatan.webp",
+                "genero": "Policiales",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 4,
+                "titulo": "La apariencia de las cosas",
+                "autor": "Elizabeth Brundage",
+                "imagen": "assets/books/elizabeth-brundage--la-apariencia-de-las-cosas.webp",
+                "genero": "Policiales"
+            },
+            { 
+                "id": 5,
+                "titulo": "Los juegos de Gerald", 
+                "autor": "Stephen King",
+                "imagen": "assets/books/geralds-game-stephen-king.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            {
+                "id": 6,
+                "titulo": "El Perfume",
+                "autor": "Patrick Süskind",
+                "imagen": "assets/books/patrick-suskind--el-perfume.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            {
+                "id": 7,
+                "titulo": "Backwater I",
+                "autor": "Michael McDowell",
+                "imagen": "assets/books/michael-mcdowell--blackwater-1.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            {
+                "id": 8,
+                "titulo": "Backwater II",
+                "autor": "Michael McDowell",
+                "imagen": "assets/books/michael-mcdowell--blackwater-2.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            {
+                "id": 9,
+                "titulo": "Backwater III",
+                "autor": "Michael McDowell",
+                "imagen": "assets/books/michael-mcdowell--blackwater-3.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            {
+                "id": 10,
+                "titulo": "Backwater IV",
+                "autor": "Michael McDowell",
+                "imagen": "assets/books/michael-mcdowell--blackwater-4.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            {
+                "id": 11,
+                "titulo": "Backwater V",
+                "autor": "Michael McDowell",
+                "imagen": "assets/books/michael-mcdowell--blackwater-5.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            {
+                "id": 12,
+                "titulo": "Backwater VI",
+                "autor": "Michael McDowell",
+                "imagen": "assets/books/michael-mcdowell--blackwater-6.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 13,
+                "titulo": "Carrie", 
+                "autor": "Stephen King",
+                "imagen": "assets/books/stephen-king--carrie.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 14,
+                "titulo": "IT", 
+                "autor": "Stephen King",
+                "genero": "Terror",
+                "imagen": "assets/books/stephen-king--it.webp",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 15,
+                "titulo": "Todo Oscuro, sin estrellas", 
+                "autor": "Stephen King",
+                "imagen": "assets/books/stephen-king--todo-oscuro-sin-estrellas.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 16,
+                "titulo": "Katie", 
+                "autor": "Michael McDowell",
+                "imagen": "assets/books/michael-mcdowell--katie.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 17,
+                "titulo": "Agujas Doradas", 
+                "autor": "Michael McDowell",
+                "imagen": "assets/books/michael-mcdowell--agujas-doradas.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 18,
+                "titulo": "Los Elementales", 
+                "autor": "Michael McDowell",
+                "imagen": "assets/books/michael-mcdowell--los-elementales.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 19,
+                "titulo": "Colección de cuentos de los Hermanos Grimm", 
+                "autor": "Hermanos Grimm",
+                "imagen": "assets/books/hermanos-Grimm--cuentos-de-los-hermanos-Grimm.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 20,
+                "titulo": "La casa de los suicidios", 
+                "autor": "Charlie Donlea",
+                "imagen": "assets/books/charlie-donlea--la-casa-de-los-suicidios.webp",
+                "genero": "Terror",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 21,
+                "titulo": "Los juegos del hambre", 
+                "autor": "Suzanne Collins",
+                "imagen": "assets/books/suzanne-collins-los-juegos-del-hambre.webp",
+                "genero": "Aventura",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 22,
+                "titulo": "En llamas", 
+                "autor": "Suzanne Collins",
+                "imagen": "assets/books/suzanne-collins--en-llamas.webp",
+                "genero": "Aventura",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 23,
+                "titulo": "Sinsajo", 
+                "autor": "Suzanne Collins",
+                "imagen": "assets/books/suzanne-collins--sinsajo.webp",
+                "genero": "Aventura",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 24,
+                "titulo": "Balada de pájaros cantores y serpientes", 
+                "autor": "Suzanne Collins",
+                "imagen": "assets/books/suzanne-collins--balada.webp",
+                "genero": "Aventura",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 25,
+                "titulo": "Amanecer en la cosecha", 
+                "autor": "Suzanne Collins",
+                "imagen": "assets/books/suzanne-collins--amanecer-en-la-cosecha.webp",
+                "genero": "Aventura",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 26,
+                "titulo": "El Bucle", 
+                "autor": "F. F. Alberti",
+                "imagen": "assets/books/ff-alberti--el-bucle.webp",
+                "genero": "Aventura",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 27,
+                "titulo": "El segundo sexo", 
+                "autor": "Simone de Beauvoir",
+                "imagen": "assets/books/simone-de-beauvoir--el-segundo-sexo.webp",
+                "genero": "Coyuntura",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 28,
+                "titulo": "Las caras del monstruo", 
+                "autor": "Julia Mengolini",
+                "imagen": "assets/books/julia-mengolini--las-caras-del-monstruo.webp",
+                "genero": "Coyuntura",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 29,
+                "titulo": "Brujas, caza de brujas y mujeres", 
+                "autor": "Silvia Federici",
+                "imagen": "assets/books/silvia-federici--brujas-caza-de-brujas-y-mujeres.webp",
+                "genero": "Coyuntura",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 30,
+                "titulo": "La revolución de las hijas", 
+                "autor": "Luciana Peker",
+                "imagen": "assets/books/luciana-peker--la-revolucion-de-las-hijas.webp",
+                "genero": "Coyuntura",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 31,
+                "titulo": "Enojate hermana",
+                "autor": "Malena Pichot",
+                "imagen": "assets/books/malena-pichot--enojate-hermana.webp",
+                "genero": "Coyuntura",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 32,
+                "titulo": "Un mundo feliz", 
+                "autor": "Aldous Huxley",
+                "genero": "Ciencia ficción",
+                "imagen": "assets/books/aldous-huxley--un-mundo-feliz.webp",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 33,
+                "titulo": "El Eternauta", 
+                "autor": "Héctor Germán Oesterheld",
+                "imagen": "assets/books/el-eternauta--hector-german-oesterheld.webp",
+                "genero": "Ciencia ficción",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 34,
+                "titulo": "Orgullo y prejuicio", 
+                "autor": "Jane Austen",
+                "genero": "romance",
+                "imagen": "assets/books/jane-austen--pride-and-prejudice.webp",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 35,
+                "titulo": "Cumbres Borrascosas", 
+                "autor": "Emily Brontë",
+                "genero": "romance",
+                "imagen": "assets/books/emily-bronte--cumbres-borrascosas.webp",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 36,
+                "titulo": "Lo que dicen tus ojos", 
+                "autor": "Florencia Bonelli",
+                "genero": "romance",
+                "imagen": "assets/books/florencia-bonelli--lo-que-dicen-tus-ojos.webp",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 37,
+                "titulo": "Caballo de fuego - París", 
+                "autor": "Florencia Bonelli",
+                "genero": "romance",
+                "imagen": "assets/books/florencia-bonelli--caballo-de-fuego-paris.webp",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 38,
+                "titulo": "Caballo de fuego - Congo", 
+                "autor": "Florencia Bonelli",
+                "genero": "romance",
+                "imagen": "assets/books/florencia-bonelli--caballo-de-fuego-congo.webp",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 39,
+                "titulo": "Caballo de fuego - Gaza", 
+                "autor": "Florencia Bonelli",
+                "genero": "romance",
+                "imagen": "assets/books/florencia-bonelli--caballo-de-fuego-gaza.webp",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 40,
+                "titulo": "Los siete maridos de Evelyn Hugo", 
+                "autor": "Taylor Jenkins Reid",
+                "genero": "romance",
+                "imagen": "assets/books/taylor-jenkins-reid--los-7-maridos-de-evelyn-hugo.webp",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 41,
+                "titulo": "Crepúsculo", 
+                "autor": "Stephenie Meyer",
+                "imagen": "assets/books/stephenie-meyer--twilight.webp",
+                "genero": "romance",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 42,
+                "titulo": "Luna nueva", 
+                "autor": "Stephenie Meyer",
+                "imagen": "assets/books/stephenie-meyer--new-moon.webp",
+                "genero": "romance",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 43,
+                "titulo": "Eclipse", 
+                "autor": "Stephenie Meyer",
+                "imagen": "assets/books/stephenie-meyer--eclipse.webp",
+                "genero": "romance",
+                "ratings": [],
+                "comentarios": []
+            },
+            { 
+                "id": 44,
+                "titulo": "Amanecer", 
+                "autor": "Stephenie Meyer",
+                "imagen": "assets/books/stephenie-meyer--breaking-dawn.webp",
+                "genero": "romance",
+                "ratings": [],
+                "comentarios": []
+            },
+            {
+                "id": 45, 
+                "titulo": "Rebelión en la granja", 
+                "autor": "George Orwell",
+                "imagen": "assets/books/george-orwell--rebelion-en-la-granja.webp",
+                "genero": "otros",
+                "ratings": [],
+                "comentarios": []
+            }
+    ]
+}
