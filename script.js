@@ -532,23 +532,70 @@ async function enviarCalificacionAServidor(libroId, calificacion, comentario) {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` // Opcional
+                'Authorization': `Bearer ${localStorage.getItem('token')}` // If using auth
             },
             body: JSON.stringify({
                 libroId,
                 usuario: nombre,
                 calificacion,
                 comentario,
-                fecha: new Date().toISOString()
+                fecha: new Date().toISOString(),
+                dispositivo: 'web' // Helps track where rating came from
             })
         });
         
-        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
-        return true;
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        // Get updated ratings from server response
+        const data = await response.json();
+        return data.actualizado; // Server should return the updated book data
     } catch (error) {
-        console.error("Error enviando calificación:", error);
-        mostrarMensaje("No se pudo enviar al servidor. Guardando localmente...", 3000);
+        console.error("Error sending rating:", error);
+        mostrarMensaje("Couldn't sync with server. Saving locally...", 3000);
         return false;
+    }
+}
+
+async function sincronizarCalificaciones() {
+    try {
+        const response = await fetch(`${URL_API_CALIFICACIONES}?ultimaSync=${localStorage.getItem('ultimaSync') || ''}`);
+        if (!response.ok) throw new Error("Sync failed");
+        
+        const data = await response.json();
+        
+        // Update local books with server data
+        data.calificaciones.forEach(calificacion => {
+            const libro = libros.find(l => l.id === calificacion.libroId);
+            if (libro) {
+                if (!libro.calificaciones) libro.calificaciones = [];
+                if (!libro.comentarios) libro.comentarios = [];
+                
+                // Add if not already present
+                if (!libro.calificaciones.includes(calificacion.calificacion)) {
+                    libro.calificaciones.push(calificacion.calificacion);
+                }
+                
+                // Add comment if not present
+                const comentarioExistente = libro.comentarios.find(c => 
+                    c.usuario === calificacion.usuario && 
+                    c.fecha === calificacion.fecha
+                );
+                
+                if (!comentarioExistente && calificacion.comentario) {
+                    libro.comentarios.push({
+                        usuario: calificacion.usuario,
+                        texto: calificacion.comentario,
+                        fecha: calificacion.fecha
+                    });
+                }
+            }
+        });
+        
+        localStorage.setItem('ultimaSync', new Date().toISOString());
+        guardarDatosBiblioteca();
+        
+    } catch (error) {
+        console.error("Sync error:", error);
     }
 }
 
@@ -590,21 +637,22 @@ async function manejarLogin() {
 // Función para enviar calificación (actualizada)
 async function enviarCalificacionLibro() {
     if (calificacionActual === 0) {
-        mostrarMensaje("Por favor selecciona una calificación");
+        mostrarMensaje("Please select a rating");
         return;
     }
 
     const comentario = entradaComentario.value.trim();
-    
-    // Intenta enviar al servidor primero
     const exitoServidor = await enviarCalificacionAServidor(
         libroActual.id,
         calificacionActual,
         comentario
     );
 
-    if (!exitoServidor) {
-        // Fallback a localStorage si el servidor falla
+    if (exitoServidor) {
+        // Update local data with server response
+        Object.assign(libroActual, exitoServidor);
+    } else {
+        // Local fallback
         if (!libroActual.calificaciones) libroActual.calificaciones = [];
         libroActual.calificaciones.push(calificacionActual);
         
@@ -616,10 +664,9 @@ async function enviarCalificacionLibro() {
                 fecha: new Date().toISOString()
             });
         }
-        
-        await guardarDatosBiblioteca();
     }
-
+    
+    await guardarDatosBiblioteca();
     mostrarMensaje(`¡Gracias por tu calificación, ${nombre}!`);
     
     if (generoActual === 'aleatorio') {
@@ -858,4 +905,10 @@ async function cargarDatosBiblioteca() {
 document.addEventListener('DOMContentLoaded', async () => {
     libros = await cargarLibrosDesdeJSON();
     await cargarDatosBiblioteca();
+    
+    if (conectado) {
+        await sincronizarCalificaciones();
+        // Refresh every 5 minutes
+        setInterval(sincronizarCalificaciones, 300000);
+    }
 });
