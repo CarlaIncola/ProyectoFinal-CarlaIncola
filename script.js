@@ -33,7 +33,7 @@ let libros = [];
 const estrellas = document.querySelectorAll('.estrella');
 
 // CONFIGURACION DE ENDPOINTS
-const URL_JSON_LIBROS = 'data/libros.json';
+const URL_JSON_LIBROS = './data/libros.json';
 const URL_API_CALIFICACIONES = 'https://tu-api.com/calificaciones';
 
 // ARRAY DE LIBROS POR SI FALLA EL JSON 
@@ -551,7 +551,7 @@ cerrarMensaje.addEventListener('click', () => contenedorMensaje.classList.add('o
             return data.actualizado;
         } catch (error) {
             console.error("Error sending rating:", error);
-            mostrarMensaje("Couldn't sync with server. Saving locally...", 3000);
+            mostrarMensaje("No se pudo conectar con el servidor. Guardando los datos localmente.", 3000);
             return false;
         }
     }
@@ -891,14 +891,20 @@ cerrarMensaje.addEventListener('click', () => contenedorMensaje.classList.add('o
     }
 
     // FUNCIÓN PARA MOSTRAR MENSAJES DE LA APP
-    function mostrarMensaje(mensaje, duracion = 3000) {
-        textoMensaje.textContent = mensaje;
-        contenedorMensaje.classList.remove('oculto');
-        if (duracion > 0) {
-            setTimeout(() => {
-                contenedorMensaje.classList.add('oculto');
-            }, duracion);
-        }
+    function mostrarMensaje(mensaje, esError = false) {
+        Toastify({
+            text: mensaje,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            style: {
+                background: esError ? "#e74c3c" : "#00ab66",
+                color: "#fff",
+                "border-radius": "8px",
+                "box-shadow": "0 4px 12px rgba(0,0,0,0.15)"
+            }
+        }).showToast();
     }
 
     // FUNCIÓN PARA PROMEDIAR CALIFICACIONES
