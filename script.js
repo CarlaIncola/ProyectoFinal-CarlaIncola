@@ -475,7 +475,6 @@ document.querySelectorAll('.boton-menu[data-genero]').forEach(boton => {
     boton.addEventListener('click', (e) => {
         const genero = e.target.dataset.genero;
         if (genero === 'aleatorio') {
-            document.getElementById('contenedor-menu').classList.add('oculto');
             mostrarLibroAleatorio();
         } else {
             mostrarLibrosPorGenero(genero);
@@ -503,8 +502,6 @@ calificarLibroAleatorio.addEventListener('click', () => {
 
 volverAleatorio.addEventListener('click', () => {
     alternarVista('menu');
-    // Explicitly show menu when returning
-    document.getElementById('contenedor-menu').classList.remove('oculto');
 });
 
 cerrarMensaje.addEventListener('click', () => contenedorMensaje.classList.add('oculto'));
@@ -873,21 +870,19 @@ cerrarMensaje.addEventListener('click', () => contenedorMensaje.classList.add('o
 
     // FUNCIÓN PARA LAS VISTAS DE LA APP
     function alternarVista(vista) {
-        document.querySelectorAll('#aplicacion-principal > div').forEach(div => {
-            if (div.id !== 'contenedor-menu') {
-                div.classList.add('oculto');
-            }
+        // Oculta todos los contenedores principales
+        document.querySelectorAll('#contenido-principal > div').forEach(div => {
+            div.classList.add('oculto');
         });
         
-        if (vista === 'menu') {
-            document.getElementById('contenedor-menu').classList.remove('oculto');
-        } else if (vista === 'libros') {
+        if (vista === 'libros') {
             contenedorLibros.classList.remove('oculto');
         } else if (vista === 'calificacion') {
             contenedorCalificacion.classList.remove('oculto');
         } else if (vista === 'aleatorio') {
             contenedorLibroAleatorio.classList.remove('oculto');
         }
+        document.getElementById('contenedor-menu').classList.remove('oculto');
     }
 
     // FUNCIÓN PARA MOSTRAR MENSAJES DE LA APP
