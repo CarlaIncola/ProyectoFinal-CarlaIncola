@@ -62,44 +62,43 @@
                 <div id="contenido-principal">
                     <h2 id="mensaje-bienvenida"></h2>
 
-                <!-- BIBLIOTECA FILTRADA SEGÚN GÉNERO -->
-                <div id="contenedor-libros" class="oculto">
-                    <h3 id="titulo-genero"></h3>
-                    <div id="lista-libros"></div>
-                    <button id="volver-menu">Volver al menú</button>
-                </div>
-
-                <!-- FORMULARIO PARA CALIFICAR LIBROS -->
-                <div id="contenedor-calificacion" class="oculto">
-                    <h3>Calificar libro</h3>
-                    <p id="libro-a-calificar"></p>
-                    <div class="estrellas-calificacion">
-                        <span class="estrella" data-calificacion="1">★</span>
-                        <span class="estrella" data-calificacion="2">★</span>
-                        <span class="estrella" data-calificacion="3">★</span>
-                        <span class="estrella" data-calificacion="4">★</span>
-                        <span class="estrella" data-calificacion="5">★</span>
+                    <!-- BIBLIOTECA FILTRADA SEGÚN GÉNERO -->
+                    <div id="contenedor-libros" class="oculto">
+                        <h3 id="titulo-genero"></h3>
+                        <div id="lista-libros"></div>
                     </div>
-                    <textarea id="entrada-comentario" placeholder="Tu opinión (opcional)"></textarea>
-                    <button id="enviar-calificacion">Enviar calificación</button>
-                    <button id="cancelar-calificacion">Cancelar</button>
+
+                    <!-- FORMULARIO PARA CALIFICAR LIBROS -->
+                    <div id="contenedor-calificacion" class="oculto">
+                        <h3>Calificar libro</h3>
+                        <p id="libro-a-calificar"></p>
+                        <div class="estrellas-calificacion">
+                            <span class="estrella" data-calificacion="1">★</span>
+                            <span class="estrella" data-calificacion="2">★</span>
+                            <span class="estrella" data-calificacion="3">★</span>
+                            <span class="estrella" data-calificacion="4">★</span>
+                            <span class="estrella" data-calificacion="5">★</span>
+                        </div>
+                        <textarea id="entrada-comentario" placeholder="Tu opinión (opcional)"></textarea>
+                        <button id="enviar-calificacion">Enviar calificación</button>
+                        <button id="cancelar-calificacion">Cancelar</button>
+                    </div>
+
+                    <!-- RECIBIR RECOMENDACIÓN ALEATORIA -->
+                    <div id="contenedor-libro-aleatorio" class="oculto">
+                        <h3>Recomendación aleatoria</h3>
+                        <div id="info-libro-aleatorio"></div>
+                        <button id="calificar-libro-aleatorio">Calificar este libro</button>
+                        <button id="volver-aleatorio">Volver al menú</button>
+                    </div>
                 </div>
 
-                <!-- RECIBIR RECOMENDACIÓN ALEATORIA -->
-                <div id="contenedor-libro-aleatorio" class="oculto">
-                    <h3>Recomendación aleatoria</h3>
-                    <div id="info-libro-aleatorio"></div>
-                    <button id="calificar-libro-aleatorio">Calificar este libro</button>
-                    <button id="volver-aleatorio">Volver al menú</button>
+                <!-- MENSAJES DE LA APP -->
+                <div id="contenedor-mensaje" class="oculto">
+                    <p id="texto-mensaje"></p>
+                    <button id="cerrar-mensaje">Aceptar</button>
                 </div>
             </div>
-
-            <!-- MENSAJES DE LA APP -->
-            <div id="contenedor-mensaje" class="oculto">
-                <p id="texto-mensaje"></p>
-                <button id="cerrar-mensaje">Aceptar</button>
-            </div>
-        </div>
 
         <script src="script.js"></script>
     </body>

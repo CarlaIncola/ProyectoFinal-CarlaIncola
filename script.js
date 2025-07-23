@@ -9,7 +9,6 @@ const botonLogout = document.getElementById('boton-logout');
 const contenedorLibros = document.getElementById('contenedor-libros');
 const listaLibros = document.getElementById('lista-libros');
 const tituloGenero = document.getElementById('titulo-genero');
-const volverMenu = document.getElementById('volver-menu');
 const contenedorCalificacion = document.getElementById('contenedor-calificacion');
 const libroACalificar = document.getElementById('libro-a-calificar');
 const entradaComentario = document.getElementById('entrada-comentario');
@@ -467,10 +466,6 @@ entradaNombre.addEventListener('keypress', (e) => {
 
 botonLogout.addEventListener('click', manejarLogout);
 
-volverMenu.addEventListener('click', () => {
-    mostrarLibrosPorGenero('todos');
-});
-
 document.querySelectorAll('.boton-menu[data-genero]').forEach(boton => {
     boton.addEventListener('click', (e) => {
         const genero = e.target.dataset.genero;
@@ -612,12 +607,10 @@ cerrarMensaje.addEventListener('click', () => contenedorMensaje.classList.add('o
         nombre = nombreIngresado.charAt(0).toUpperCase() + nombreIngresado.slice(1).toLowerCase();
         conectado = true;
         
-        // Carga libros si no están cargados
         if (libros.length === 0) {
             libros = await cargarLibrosDesdeJSON();
         }
         
-        // UI
         mensajeBienvenida.textContent = `¡Hola ${nombre}! 👋`;
         contenedorLogin.classList.add('oculto');
         aplicacionPrincipal.classList.remove('oculto');
@@ -640,10 +633,8 @@ cerrarMensaje.addEventListener('click', () => contenedorMensaje.classList.add('o
         );
 
         if (exitoServidor) {
-            // Update local data with server response
             Object.assign(libroActual, exitoServidor);
         } else {
-            // Local fallback
             if (!libroActual.calificaciones) libroActual.calificaciones = [];
             libroActual.calificaciones.push(calificacionActual);
             
@@ -720,99 +711,99 @@ cerrarMensaje.addEventListener('click', () => contenedorMensaje.classList.add('o
 
     // FUNCIÓN INTERFAZ DE LIBROS
     async function renderizarLibros(librosGenero) {
-      listaLibros.innerHTML = '';
-      
-      const fragment = document.createDocumentFragment();
-      
-      for (const [indice, libro] of librosGenero.entries()) {
-          const elementoLibro = document.createElement('div');
-          elementoLibro.className = 'elemento-libro';
-          
-          const imagenHTML = libro.imagen 
-              ? `<div class="contenedor-imagen-libro">
-                  <img src="${libro.imagen}" alt="${libro.titulo}" class="imagen-libro" loading="lazy" onerror="this.onerror=null;this.src='src/assets/libro-default.jpg'">
-                  </div>`
-              : '<div class="marcador-imagen-libro">No hay imagen disponible.</div>';
-          
-          const tieneComentarios = libro.comentarios && libro.comentarios.length > 0;
-          
-          elementoLibro.innerHTML = `
-              ${imagenHTML}
-              <div class="info-libro">
-                  <h4>${libro.titulo}</h4>
-                  <p>Autor: ${libro.autor}</p>
-                  ${libro.calificaciones && libro.calificaciones.length > 0 ? 
-                      `<p>${calcularPromedioCalificaciones(libro.calificaciones).toFixed(1)} ★ 
-                      (${libro.calificaciones.length} calificaciones)</p>` : 
-                      '<p>Sin calificaciones aún</p>'}
-                  ${tieneComentarios ? `
-                  <div class="contenedor-comentarios">
-                      <button class="boton-ver-comentarios" data-indice="${indice}">
-                          Ver comentarios (${libro.comentarios.length})
-                      </button>
-                      <div class="comentarios-libro oculto">
-                          ${libro.comentarios.map(com => `
-                              <div class="comentario">
-                                  <strong>${com.usuario || 'Anónimo'}:</strong>
-                                  <p>${com.texto}</p>
-                                  <small>${com.fecha ? new Date(com.fecha).toLocaleDateString() : ''}</small>
-                              </div>
-                          `).join('')}
-                      </div>
-                  </div>` : ''}
-                  <button class="boton-calificar-libro" data-indice="${indice}">Calificar</button>
-              </div>
-          `;
-          
-          fragment.appendChild(elementoLibro);
-      }
-      
-      listaLibros.appendChild(fragment);
-      
-      // Botones de calificación
-      document.querySelectorAll('.boton-calificar-libro').forEach(boton => {
-          boton.addEventListener('click', (e) => {
-              const indice = e.target.dataset.indice;
-              mostrarFormularioCalificacion(librosGenero[indice]);
-          });
-      });
-      
-      // Botones de comentarios (con animación)
-      document.querySelectorAll('.boton-ver-comentarios').forEach(boton => {
-          boton.addEventListener('click', (e) => {
-              const contenedorComentarios = e.target.nextElementSibling;
-              const libro = librosGenero[e.target.dataset.indice];
-              
-              if (contenedorComentarios.classList.contains('oculto')) {
-                  // Abrir comentarios
-                  contenedorComentarios.style.maxHeight = '0';
-                  contenedorComentarios.classList.remove('oculto');
-                  const alturaReal = contenedorComentarios.scrollHeight;
-                  contenedorComentarios.style.maxHeight = `${alturaReal}px`;
-                  
-                  setTimeout(() => {
-                      contenedorComentarios.style.maxHeight = 'none';
-                  }, 300);
-                  
-                  e.target.textContent = 'Ocultar comentarios';
-              } else {
-                  // Cerrar comentarios
-                  const alturaReal = contenedorComentarios.scrollHeight;
-                  contenedorComentarios.style.maxHeight = `${alturaReal}px`;
-                  
-                  setTimeout(() => {
-                      contenedorComentarios.style.maxHeight = '0';
-                  }, 10);
-                  
-                  setTimeout(() => {
-                      contenedorComentarios.classList.add('oculto');
-                  }, 310);
-                  
-                  e.target.textContent = `Ver comentarios (${libro.comentarios.length})`;
-              }
-          });
-      });
-  }
+        listaLibros.innerHTML = '';
+
+        const fragment = document.createDocumentFragment();
+        
+        for (const [indice, libro] of librosGenero.entries()) {
+            const elementoLibro = document.createElement('div');
+            elementoLibro.className = 'elemento-libro';
+            
+            const imagenHTML = libro.imagen 
+                ? `<div class="contenedor-imagen-libro">
+                        <img src="${libro.imagen}" alt="${libro.titulo}" class="imagen-libro" loading="lazy" onerror="this.onerror=null;this.src='src/assets/libro-default.jpg'">
+                    </div>`
+                : '<div class="marcador-imagen-libro">No hay imagen disponible.</div>';
+            
+            const tieneComentarios = libro.comentarios && libro.comentarios.length > 0;
+            
+            elementoLibro.innerHTML = `
+                ${imagenHTML}
+                    <div class="info-libro">
+                        <h4>${libro.titulo}</h4>
+                        <p>Autor: ${libro.autor}</p>
+                        ${libro.calificaciones && libro.calificaciones.length > 0 ? 
+                        `<p>${calcularPromedioCalificaciones(libro.calificaciones).toFixed(1)} ★ 
+                        (${libro.calificaciones.length} calificaciones)</p>` : 
+                        '<p>Sin calificaciones aún</p>'}
+                        ${tieneComentarios ? `
+                        <div class="contenedor-comentarios">
+                            <button class="boton-ver-comentarios" data-indice="${indice}">
+                                Ver comentarios (${libro.comentarios.length})
+                            </button>
+                            <div class="comentarios-libro oculto">
+                                ${libro.comentarios.map(com => `
+                                    <div class="comentario">
+                                        <strong>${com.usuario || 'Anónimo'}:</strong>
+                                        <p>${com.texto}</p>
+                                        <small>${com.fecha ? new Date(com.fecha).toLocaleDateString() : ''}</small>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>` : ''}
+                        <button class="boton-calificar-libro" data-indice="${indice}">Calificar</button>
+                    </div>
+            `;
+            
+            fragment.appendChild(elementoLibro);
+        }
+        
+        listaLibros.appendChild(fragment);
+        
+        // BOTONES DE CLASIFICACIONES
+        document.querySelectorAll('.boton-calificar-libro').forEach(boton => {
+            boton.addEventListener('click', (e) => {
+                const indice = e.target.dataset.indice;
+                mostrarFormularioCalificacion(librosGenero[indice]);
+            });
+        });
+        
+        // BOTONES DE COMENTARIOS
+        document.querySelectorAll('.boton-ver-comentarios').forEach(boton => {
+            boton.addEventListener('click', (e) => {
+                const contenedorComentarios = e.target.nextElementSibling;
+                const libro = librosGenero[e.target.dataset.indice];
+                
+                if (contenedorComentarios.classList.contains('oculto')) {
+                    // Abrir comentarios
+                    contenedorComentarios.style.maxHeight = '0';
+                    contenedorComentarios.classList.remove('oculto');
+                    const alturaReal = contenedorComentarios.scrollHeight;
+                    contenedorComentarios.style.maxHeight = `${alturaReal}px`;
+                    
+                    setTimeout(() => {
+                        contenedorComentarios.style.maxHeight = 'none';
+                    }, 300);
+                    
+                    e.target.textContent = 'Ocultar comentarios';
+                } else {
+                    // Cerrar comentarios
+                    const alturaReal = contenedorComentarios.scrollHeight;
+                    contenedorComentarios.style.maxHeight = `${alturaReal}px`;
+                    
+                    setTimeout(() => {
+                        contenedorComentarios.style.maxHeight = '0';
+                    }, 10);
+                    
+                    setTimeout(() => {
+                        contenedorComentarios.classList.add('oculto');
+                    }, 310);
+                    
+                    e.target.textContent = `Ver comentarios (${libro.comentarios.length})`;
+                }
+            });
+        });
+    }
 
     // FUNCIÓN PARA MOSTRAR UN LIBRO ALEATORIO
     function mostrarLibroAleatorio() {
@@ -854,7 +845,7 @@ cerrarMensaje.addEventListener('click', () => contenedorMensaje.classList.add('o
         alternarVista('calificacion');
     }
 
-        // FUNCIÓN PARA CLICKEAR ESTRELLAS
+    // FUNCIÓN PARA CLICKEAR ESTRELLAS
     function manejarClickEstrella(e) {
         calificacionActual = parseInt(e.target.dataset.calificacion);
         actualizarEstrellas();
@@ -870,7 +861,6 @@ cerrarMensaje.addEventListener('click', () => contenedorMensaje.classList.add('o
 
     // FUNCIÓN PARA LAS VISTAS DE LA APP
     function alternarVista(vista) {
-        // Oculta todos los contenedores principales
         document.querySelectorAll('#contenido-principal > div').forEach(div => {
             div.classList.add('oculto');
         });

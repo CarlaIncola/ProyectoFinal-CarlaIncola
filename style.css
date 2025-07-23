@@ -25,6 +25,12 @@
         position: relative;
     }
 
+    @media (min-width: 767.9px) {    
+        #contenedor-app {
+            flex-direction: column;
+        }
+    }
+
 
 /* TÍTULO DE LA APP */
     .titulo-proyecto {
@@ -112,8 +118,7 @@
 
 /* BOTONES */
     #cancelar-calificacion, 
-    #calificar-libro-aleatorio, 
-    #volver-menu, 
+    #calificar-libro-aleatorio,
     #volver-aleatorio, 
     #cerrar-mensaje {
         padding: 10px 15px;
@@ -193,8 +198,34 @@
         background-color: #c0392b;
     }
 
-/* MENÚ */
-
+/* BOTONES - MENU LATERAL */
+    .boton-menu, #boton-logout {
+        padding: 12px 15px;
+        background-color: transparent;
+        color: white;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .boton-menu:hover, #boton-logout:hover {
+        background-color: #34495e;
+        text-decoration: none;
+    }
+    
+    .boton-menu i, #boton-logout i {
+        width: 20px;
+        text-align: center;
+    }
+    
+    .boton-menu:not(:last-child)::after {
+        display: none;
+    }
 
 /* CONTENEDORES DE LIBROS */
     .elemento-libro {
@@ -247,6 +278,12 @@
         font-size: 12px;
     }
 
+    @media (min-width: 767.9px) {
+        .elemento-libro {
+            margin-bottom: 0px;
+        }
+    }
+
 /* COMENTARIOS DEL LIBRO */
     .comentarios-libro {
         margin-top: 15px;
@@ -269,11 +306,6 @@
         color: #666;
         font-size: 0.8em;
     }
-
-    
-
-
-
 
     /* COMENTARIOS DESPLEGABLES DE LIBROS */
     .contenedor-comentarios {
@@ -353,27 +385,6 @@
         min-height: 100px;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* MENSAJES DE LA APP */
     #contenedor-mensaje {
         position: fixed;
@@ -405,17 +416,6 @@
         padding: 20px;
     }
 
-
-
-
-
-
-
-
-
-
-
-
 /* RECOMENDACIÓN LIBRO ALEATORIO */
     .imagen-libro-aleatorio {
         max-width: 200px;
@@ -436,54 +436,6 @@
         padding: 0px 0px 20px 0px;
     }
 
-
-
-
-
-
-
-
-
-
-
-/* MEDIA QUERIES */
-@media (min-width: 767.9px) {
-    
-    .menu-toggle {
-        display: none;
-    }
-    
-    #lista-libros {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .elemento-libro {
-        margin-bottom: 0px;
-    }
-
-    #contenedor-app {
-        flex-direction: column;
-    }
-    
-    #contenedor-menu {
-        width: 100%;
-        position: relative;
-    }
-    
-    .opciones-menu {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .boton-menu, #boton-logout {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-    
-}
-
-
 @media (min-width: 1119.9px) {
     #lista-libros {
         display: grid;
@@ -492,177 +444,87 @@
     }    
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.opciones-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 0 15px;
-}
-
-.boton-menu, #boton-logout {
-    padding: 12px 15px;
-    background-color: transparent;
-    color: white;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.boton-menu:hover, #boton-logout:hover {
-    background-color: #34495e;
-    text-decoration: none;
-}
-
-.boton-menu i, #boton-logout i {
-    width: 20px;
-    text-align: center;
-}
-
-.boton-menu:not(:last-child)::after {
-    display: none;
-}
-
-#contenido-principal {
-    flex: 1;
-    padding: 20px;
-    background-color: rgb(255, 0, 0);
-    min-width: 0;
-
-}
-
-
-
-
-
-
-
-
-/* MENÚ LATERAL (Desktop/Tablet) */
-#contenedor-menu {
-    width: 250px;
-    min-width: 250px; 
-    background-color: #2c3e50;
-    color: white;
-    padding: 20px 0;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    overflow-y: auto;
-    z-index: 90;
-}
-
 /* CONTENIDO PRINCIPAL */
-#contenido-principal {
-    flex: 1;
-    padding: 20px;
-    background-color: rgb(244, 244, 244);
-    margin-left: 250px; /* Igual al ancho del menú */
-    min-height: calc(100vh - 60px);
-}
+    #contenido-principal {
+        flex: 1;
+        padding: 20px;
+        background-color: rgb(244, 244, 244);
+        margin-left: 250px; /* Igual al ancho del menú */
+        min-height: calc(100vh - 60px);
+    }
 
 /* LISTA DE LIBROS */
-#lista-libros {
-    display: grid;
-    gap: 7px;
-}
-
-/* --- VERSIÓN TABLET (768px-991px) --- */
-@media (min-width: 768px) {
     #lista-libros {
-        grid-template-columns: repeat(1, 1fr);
+        display: grid;
+        gap: 7px;
     }
-}
 
-/* --- VERSIÓN DESKTOP (992px+) --- */
-@media (min-width: 992px) {
-    #lista-libros {
-        grid-template-columns: repeat(2, 1fr);
+    @media (min-width: 768px) {
+        #lista-libros {
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
-}
 
-@media (min-width: 1199px) {
-    #lista-libros {
-        grid-template-columns: repeat(3, 1fr);
+    @media (min-width: 992px) {
+        #lista-libros {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
-}
 
-/* --- VERSIÓN MÓVIL (767px o menos) --- */
-@media (max-width: 767px) {
+    @media (min-width: 1199px) {
+        #lista-libros {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+/* MENU */
     #contenedor-menu {
-        width: 100%;
-        position: relative;
-        top: auto;
-        left: auto;
-        height: auto;
-        margin-left: 0;
+        width: 250px;
+        min-width: 250px; 
+        background-color: #2c3e50;
+        color: white;
+        padding: 20px 0;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        overflow-y: auto;
+        z-index: 90;
     }
-    
-    #contenido-principal {
-        margin-left: 0;
-        padding-top: 20px;
-    }
-    
+
     .opciones-menu {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 15px;
     }
-    
-    #lista-libros {
-        grid-template-columns: 1fr;
+
+    @media (max-width: 767px) {
+        #contenedor-menu {
+            width: 100%;
+            position: relative;
+            top: auto;
+            left: auto;
+            height: auto;
+            margin-left: 0;
+        }
+        
+        #contenido-principal {
+            margin-left: 0;
+            padding-top: 20px;
+        }
+        
+        .opciones-menu {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
-}
+
+    @media (min-width: 767.9px) { 
+        .boton-menu, #boton-logout {
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+        
+    }
